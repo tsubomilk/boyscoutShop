@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCOUT SHOP JAPAN</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/brands.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/solid.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/brands.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/solid.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/fontawesome.min.css">
+</head>
+
+<div class="scout-shop-container">
+    <div class="scout-map-container">
+        <!-- ECサイトリンクバナー（小型化・明確化） -->
+        <div class="ec-site-link-container">
+            <a href="https://www.scoutshop.jp/" class="ec-site-link" target="_blank">
+                <div class="ec-banner">
+                    <img src="img/shop_logo.png" alt="SCOUT SHOP JAPAN" class="shop-logo-small">
+                    <div class="ec-link-text">
+                        <span class="ec-title">オンラインショップ</span>
+                        <span class="ec-action">ここをクリックして公式ECサイトへ <i class="arrow-icon">→</i></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const canvas = document.getElementById('scoutMapCanvas');
+                const ctx = canvas.getContext('2d');
+
+                // ボーイスカウトカラー定義
+                const colors = {
+                    prefectureColor: '#00664B',  // 都道府県の色（緑）
+                    hoverColor: '#ffc107',       // ホバー時の色（黄色）
+                    border: '#1b5e20',           // 枠線（濃い緑）
+                    background: '#f8faea',       // 背景（クリーム色）
+                    text: '#ffffff',             // テキスト（白）
+                    headerText: '#1b5e20'        // ヘッダーテキスト（濃い緑）
+                };
+            });
+        </script>
+    </div>
+
+    <div class="japan-map-container">
+
+        <!-- 説明用吹き出し -->
+        <div class="map-description-bubble">
+            <div class="bubble-content">
+                <h3>地域からスカウトショップを探す</h3>
+                <p>お住まいの地域をクリックいただくと<br>各地方のショップが表示されます。</p>
+            </div>
+            <div class="magnifier-icon"></div>
+        </div>
+
+        <!-- 日本地図 -->
+        <img src="img/japan-map.png" alt="日本地図" class="japan-map">
+
+
+        <!-- 地域ボタン -->
+        <div class="scout-region-button hokkaido-tohoku">
+            <a href="#hokkaido-tohoku" class="scout-region-link">
+                <span class="scout-badge">
+                    <i class="scout-emblem"></i>
+                </span>
+                <span class="region-name">北海道・東北地方</span>
+            </a>
+        </div>
+
+        <div class="scout-region-button kanto">
+            <a href="#kanto" class="scout-region-link">
+                <span class="scout-badge">
+                    <i class="scout-emblem"></i>
+                </span>
+                <span class="region-name">関東地方</span>
+            </a>
+        </div>
+
+        <div class="scout-region-button chubu">
+            <a href="#chubu" class="scout-region-link">
+                <span class="scout-badge">
+                    <i class="scout-emblem"></i>
+                </span>
+                <span class="region-name">中部地方</span>
+            </a>
+        </div>
+
+        <div class="scout-region-button kinki" style="top: 70%; left: 31%;">
+            <a href="#kinki" class="scout-region-link">
+                <span class="scout-badge">
+                    <i class="scout-emblem"></i>
+                </span>
+                <span class="region-name">近畿地方</span>
+            </a>
+        </div>
+
+        <div class="scout-region-button chugoku">
+            <a href="#chugoku" class="scout-region-link">
+                <span class="scout-badge">
+                    <i class="scout-emblem"></i>
+                </span>
+                <span class="region-name">中国地方</span>
+            </a>
+        </div>
+
+        <div class="scout-region-button shikoku" style="top: 80%; left: 23%;">
+            <a href="#shikoku" class="scout-region-link">
+                <span class="scout-badge">
+                    <i class="scout-emblem"></i>
+                </span>
+                <span class="region-name">四国地方</span>
+            </a>
+        </div>
+
+        <div class="scout-region-button kyushu-okinawa">
+            <a href="#kyushu-okinawa" class="scout-region-link">
+                <span class="scout-badge">
+                    <i class="scout-emblem"></i>
+                </span>
+                <span class="region-name">九州・沖縄地方</span>
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="shop-list-container">
+        <h2 class="shop-title">ボーイスカウトショップ一覧</h2>
+        <hr class="shop-title-line">
+
+        <!-- 北海道・東北地方 -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3>北海道・東北地方</h3>
+            </div>
+
+            <!-- 北海道 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">北海道</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">ボーイスカウト北海道連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒062-0934 札幌市豊平区平岸4条14-3-4 北海道ボーイスカウト会館</p>
+                            <p class="shop-tel">TEL：011-823-7121</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=札幌市豊平区平岸4条14-3-4"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 青森県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">青森県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">ボーイスカウト青森県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒030-0111 青森市大字荒川字藤戸119-7 県総合社会教育センター内</p>
+                            <p class="shop-tel">TEL：0177-39-0660</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=青森市大字荒川字藤戸119-7"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">トキワスポーツ（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒030-0801 青森市新町1-8-1</p>
+                            <p class="shop-tel">TEL：017-722-4647</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=青森市新町1-8-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 岩手県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">岩手県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">ボーイスカウト岩手連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒020-0122 盛岡市みたけ3-38-20 岩手県青少年会館</p>
+                            <p class="shop-tel">TEL：019-641-1995</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=盛岡市みたけ3-38-20"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 宮城県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">宮城県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">ボーイスカウト宮城県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒985-0841 多賀城市鶴ヶ谷1-4-1 宮城県多賀城分庁舎内</p>
+                            <p class="shop-tel">TEL：022-355-6265</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=多賀城市鶴ヶ谷1-4-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 秋田県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">秋田県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">ボーイスカウト秋田県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒011-0905 秋田市寺内神屋敷3-1 県青少年交流センター</p>
+                            <p class="shop-tel">TEL：018-857-0068</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=秋田市寺内神屋敷3-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 山形県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">山形県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">ボーイスカウト山形県連盟<span class="note">※一部商品のみ取扱</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒990-0047 山形市旅篭町2-5-12 山形メディアタワー内</p>
+                            <p class="shop-tel">TEL：023-633-7995</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=山形市旅篭町2-5-12"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 福島県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">福島県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">福島連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒960-8153 福島市黒岩字田部屋53-5 福島県青少年会館</p>
+                            <p class="shop-tel">TEL：024-546-4155</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=福島市黒岩字田部屋53-5"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 関東地方 -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3>関東地方</h3>
+            </div>
+
+            <!-- 茨城県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">茨城県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">茨城県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒310-0034 水戸市緑町1-1-18 茨城県立青少年会館</p>
+                            <p class="shop-tel">TEL：029-226-8482</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=水戸市緑町1-1-18"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 栃木県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">栃木県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">栃木県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒320-0043 宇都宮市桜4-2-2 県立美術館普及分館3F</p>
+                            <p class="shop-tel">TEL：028-621-9800</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=宇都宮市桜4-2-2"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 群馬県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">群馬県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">群馬県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒371-0044 前橋市荒牧町2-12 群馬県青少年会館</p>
+                            <p class="shop-tel">TEL：027-232-7620</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=前橋市荒牧町2-12"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">スズラン百貨店前橋店（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒371-0022 前橋市千代田町2-12-3</p>
+                            <p class="shop-tel">TEL：027-233-1111</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=前橋市千代田町2-12-3"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈲キタノスポーツ（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒378-0048 沼田市中町1147</p>
+                            <p class="shop-tel">TEL：0278-24-3311</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=沼田市中町1147"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 埼玉県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">埼玉県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">埼玉県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒330-0074 さいたま市浦和区北浦和5-6-5 浦和地方庁舎別館内</p>
+                            <p class="shop-tel">TEL：048-822-2463</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=さいたま市浦和区北浦和5-6-5"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱八木橋6F 学生服（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒360-0047 熊谷市仲町74</p>
+                            <p class="shop-tel">TEL：048-523-1111</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=熊谷市仲町74"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱矢尾百貨店（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒368-0035 秩父市上町1-5-9</p>
+                            <p class="shop-tel">TEL：0494-24-8080</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=秩父市上町1-5-9"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 千葉県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">千葉県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">千葉県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒260-0001 千葉市中央区都町2-1-12 千葉県都町合同庁舎4F</p>
+                            <p class="shop-tel">TEL：043-235-8070</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=千葉市中央区都町2-1-12"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱そごう千葉店（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒260-0028 千葉市中央区新町1000</p>
+                            <p class="shop-tel">TEL：043-245-8371</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=千葉市中央区新町1000"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 東京都 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">東京都</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">SCOUT SHOP TOKYO（直営店）<span class="note">※東京連盟事務局では取扱なし</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒167-0022 杉並区下井草4-4-3</p>
+                            <p class="shop-tel">TEL：03-3868-2351</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=杉並区下井草4-4-3"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 神奈川県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">神奈川県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">神奈川連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒241-0815 横浜市旭区中尾2-1-14 スカウト会館</p>
+                            <p class="shop-tel">TEL：045-365-3421</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=横浜市旭区中尾2-1-14"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱さいか屋 学生服売場（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒238-0008 横須賀市大滝町1-10</p>
+                            <p class="shop-tel">TEL：0468-22-9047</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=横須賀市大滝町1-10"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">スポーツオーソリティ港北ニュータウン店（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒224-0032 横浜市都筑区茅ヶ崎中央14-12 港北KEY SOUTH内</p>
+                            <p class="shop-tel">TEL：045-947-1333</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=横浜市都筑区茅ヶ崎中央14-12"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中部地方 -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3>中部地方</h3>
+            </div>
+
+            <!-- 新潟県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">新潟県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">新潟連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒951-8052 新潟市中央区下大川前通4-2195</p>
+                            <p class="shop-tel">TEL：025-229-5454</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=新潟市中央区下大川前通4-2195"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 富山県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">富山県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">富山県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒930-0096 富山市舟橋北町7-1 富山県教育文化会館</p>
+                            <p class="shop-tel">TEL：076-432-6505</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=富山市舟橋北町7-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 石川県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">石川県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">石川県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒921-8105 金沢市平和町1-3-1 石川県平和町庁舎2F</p>
+                            <p class="shop-tel">TEL：076-272-8064</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=金沢市平和町1-3-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱大和香林坊 ユニフォーム（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒920-0961 金沢市香林坊1-1-1</p>
+                            <p class="shop-tel">TEL：076-220-1258</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=金沢市香林坊1-1-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 福井県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">福井県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">福井連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒918-8135 福井市下六条町14-1 福井県生活学習館220号室</p>
+                            <p class="shop-tel">TEL：0776-41-4064</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=福井市下六条町14-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱福井西武（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒910-0006 福井市中央1-8-1</p>
+                            <p class="shop-tel">TEL：0776-27-0111</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=福井市中央1-8-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 山梨県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">山梨県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">山梨連盟<span class="note">※事務局では取扱なし</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒440-0073 甲府市湯村1-13-13 石橋方</p>
+                            <p class="shop-tel">TEL：090-3099-7133</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=甲府市湯村1-13-13"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 長野県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">長野県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">長野県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒399-0005 松本市野溝木工2-6-16</p>
+                            <p class="shop-tel">TEL：0263-50-6550</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=松本市野溝木工2-6-16"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱ながの東急（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒380-8539 長野市南千歳1-1-1</p>
+                            <p class="shop-tel">TEL：026-226-8181</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=長野市南千歳1-1-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 岐阜県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">岐阜県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">岐阜県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒500-8384 岐阜市薮田南5-14-53 県民ふれあい会館2棟9F</p>
+                            <p class="shop-tel">TEL：058-275-5356</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=岐阜市薮田南5-14-53"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">HIMARAYA OUTDOOR GIFU店</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒500-8383 岐阜県岐阜市江添1-6-7</p>
+                            <p class="shop-tel">TEL：058-201-0055</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=岐阜県岐阜市江添1-6-7"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 静岡県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">静岡県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">静岡県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒420-0839 静岡市葵区鷹匠1-12-1 青葉園ビル305号</p>
+                            <p class="shop-tel">TEL：054-255-6185</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=静岡市葵区鷹匠1-12-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">志太地区需品部 舘洋品店（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒426-0037 藤枝市青木2-6-7</p>
+                            <p class="shop-tel">TEL：054-641-1037</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=藤枝市青木2-6-7"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">そなえるショップ</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒430-0831 静岡県浜松市南区御給町18</p>
+                            <p class="shop-tel">TEL：090-9122-3790</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=静岡県浜松市南区御給町18"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 愛知県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">愛知県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">愛知連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒453-0016 名古屋市中村竹橋町36-31 旧中村区役所2F</p>
+                            <p class="shop-tel">TEL：052-414-6380</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=名古屋市中村竹橋町36-31"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 近畿地方 -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3>近畿地方</h3>
+            </div>
+
+            <!-- 三重県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">三重県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">三重連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒514-0061 津市一身田上津部田1234 生涯学習センター2F</p>
+                            <p class="shop-tel">TEL：059-233-1166</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=津市一身田上津部田1234"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 滋賀県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">滋賀県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">滋賀連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒520-0044 大津市京町4-3-28 滋賀県厚生会館1階</p>
+                            <p class="shop-tel">TEL：077-522-3681</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=大津市京町4-3-28"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 京都府 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">京都府</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">京都連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒601-8047 京都市南区東九条下殿田町70 京都府民総合交流プラザ東館3F</p>
+                            <p class="shop-tel">TEL：075-662-8801</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=京都市南区東九条下殿田町70"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱髙島屋京都店5F ボーイスカウトコーナー（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒600-8520 京都市下京区四条通河原町西入真町52</p>
+                            <p class="shop-tel">TEL：075-221-8811</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=京都市下京区四条通河原町西入真町52"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 大阪府 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">大阪府</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">大阪連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒543-0052 大阪市天王寺区大道5-4-6</p>
+                            <p class="shop-tel">TEL：06-6770-0043</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=大阪市天王寺区大道5-4-6"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 兵庫県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">兵庫県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">兵庫連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒653-0036 神戸市長田区腕塚町5-3-1 アスタくにづか1番館南棟3階</p>
+                            <p class="shop-tel">TEL：078-754-7900</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=神戸市長田区腕塚町5-3-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 奈良県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">奈良県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">大和高田地区（スカウト会館）<span class="note">※奈良県連盟事務局では取扱なし</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒635-0082 大和高田市本郷町12-18</p>
+                            <p class="shop-tel">TEL：0745-52-4872</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=大和高田市本郷町12-18"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 和歌山県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">和歌山県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">和歌山連盟<span class="note">※事務局では取扱なし</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒640-8425 和歌山市松江北3-4-20 加藤 隆也方</p>
+                            <p class="shop-tel">TEL：073-452-3022</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=和歌山市松江北3-4-20"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中国地方 -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3>中国地方</h3>
+            </div>
+
+            <!-- 鳥取県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">鳥取県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">とくなが商店（販売協力店）<span class="note">※鳥取連盟事務局では取扱なし</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒680-0007 鳥取市湯所町1-356</p>
+                            <p class="shop-tel">TEL：0857-23-3559</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=鳥取市湯所町1-356"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 島根県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">島根県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">島根連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒690-0033 松江市大庭町1751-13 島根青少年館</p>
+                            <p class="shop-tel">TEL：0852-25-5799</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=松江市大庭町1751-13"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱ニ協社（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒693-0001 出雲市今市町539</p>
+                            <p class="shop-tel">TEL：0853-21-5155</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=出雲市今市町539"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 岡山県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">岡山県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱天満屋岡山店（販売協力店）<span class="note">※岡山連盟事務局では取扱なし</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒700-0822 岡山市表町2-1-1</p>
+                            <p class="shop-tel">TEL：086-231-7445</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=岡山市表町2-1-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱山下体育社（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒700-0836 岡山市中央町2-28</p>
+                            <p class="shop-tel">TEL：086-224-3385</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=岡山市中央町2-28"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 広島県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">広島県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">広島県連盟<span class="note">※一部商品のみ取扱</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒730-0041 広島市中区小町4-33 中国電力（株）2号館2F</p>
+                            <p class="shop-tel">TEL：082-242-2495</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=広島市中区小町4-33"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱天満屋福山店7F 子供服（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒720-8636 福山市元町1-1</p>
+                            <p class="shop-tel">TEL：084-927-2506</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=福山市元町1-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 山口県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">山口県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">山口県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒753-0064 山口市神田町1-80 防長青年館3F</p>
+                            <p class="shop-tel">TEL：0839-28-0079</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=山口市神田町1-80"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四国地方 -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3>四国地方</h3>
+            </div>
+
+            <!-- 徳島県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">徳島県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">徳島連盟<span class="note">※一部商品のみ取扱</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒774-0017 阿南市見能林町寺ノ前9-1 中野 貴裕方</p>
+                            <p class="shop-tel">TEL：0884-23-3523</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=阿南市見能林町寺ノ前9-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱笹倉スポーツ社（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒770-0004 徳島市南田宮2-3-108</p>
+                            <p class="shop-tel">TEL：088-623-6355</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=徳島市南田宮2-3-108"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 香川県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">香川県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">香川連盟<span class="note">※事務局では取扱なし</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒769-0102 高松市国分寺町国分1009 香川県青少年センター内</p>
+                            <p class="shop-tel">TEL：なし</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=高松市国分寺町国分1009"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 愛媛県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">愛媛県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">愛媛県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒791-1136 松山市上野町甲650 愛媛県生涯学習センター</p>
+                            <p class="shop-tel">TEL：089-963-8556</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=松山市上野町甲650"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱伊予鉄高島屋（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒790-0012 松山市湊町5-1-1</p>
+                            <p class="shop-tel">TEL：089-948-2252</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=松山市湊町5-1-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 高知県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">高知県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">高知県連盟<span class="note">※事務局では取扱なし</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒787-0034 四万十市中村弥生町37 青木 浩方</p>
+                            <p class="shop-tel">TEL：0880-34-7090</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=四万十市中村弥生町37"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 九州・沖縄地方 -->
+        <div class="region-container">
+            <div class="region-header">
+                <h3>九州・沖縄地方</h3>
+            </div>
+
+            <!-- 福岡県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">福岡県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">福岡県連盟（スカウトショップ福岡）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒812-0852 福岡市博多区東平尾公園2-1-3 福岡県立総合プール2F</p>
+                            <p class="shop-tel">TEL：092-624-3755</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=福岡市博多区東平尾公園2-1-3"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱井筒屋7F（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒802-0007 北九州市小倉北区船場町1-1</p>
+                            <p class="shop-tel">TEL：093-522-2715</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=北九州市小倉北区船場町1-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 佐賀県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">佐賀県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">佐賀県連盟<span class="note">※事務局では取扱なし</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒849-1312 佐賀県鹿島市納富分甲100-13 平田佳代様方</p>
+                            <p class="shop-tel">TEL：0955-62-2219</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=佐賀県鹿島市納富分甲100-13"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 長崎県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">長崎県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">長崎県連盟<span class="note">※一部商品のみ取扱</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒850-0031 長崎市桜町4番1号 長崎商工会館1F</p>
+                            <p class="shop-tel">TEL：095-827-1656</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=長崎市桜町4番1号"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱浜屋（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒850-0853 長崎市浜町7-11</p>
+                            <p class="shop-tel">TEL：095-824-3221</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=長崎市浜町7-11"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 熊本県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">熊本県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">熊本県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒862-0950 熊本市水前寺3-17-15 熊本県青年会館</p>
+                            <p class="shop-tel">TEL：096-383-7901</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=熊本市水前寺3-17-15"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱シェルパ（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒862-0975 熊本市中央区新屋敷1-14-30</p>
+                            <p class="shop-tel">TEL：096-362-9585</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=熊本市中央区新屋敷1-14-30"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 大分県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">大分県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">大分県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒870-0045 大分県大分市城崎町2-4-19 セゾン城崎207</p>
+                            <p class="shop-tel">TEL：097-529-7175</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=大分県大分市城崎町2-4-19"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱トキハ（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒870-0822 大分市府内町2-1-4</p>
+                            <p class="shop-tel">TEL：097-538-1111</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=大分市府内町2-1-4"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 宮崎県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">宮崎県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">宮崎連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒889-2151 宮崎市大字熊野1443-12 宮崎県スポーツ会館2F</p>
+                            <p class="shop-tel">TEL：0985-89-3250</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=宮崎市大字熊野1443-12"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱宮崎山形屋（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒880-0805 宮崎市橘通東3-4-12</p>
+                            <p class="shop-tel">TEL：0985-31-3272</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=宮崎市橘通東3-4-12"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 鹿児島県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">鹿児島県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">鹿児島県連盟<span class="note">※一部商品のみ取扱</span></h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒899-5431 姶良市姶良町西餅田3081-4 松林方</p>
+                            <p class="shop-tel">TEL：0995-65-8652</p>
+                            <p class="shop-map"><a
+                                    href="https://www.google.com/maps/search/?api=1&query=姶良市姶良町西餅田3081-4"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+
+                    <div class="shop-box">
+                        <h4 class="shop-name">㈱山形屋（販売協力店）</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒892-0828 鹿児島市金生町3-1</p>
+                            <p class="shop-tel">TEL：099-227-6143</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=鹿児島市金生町3-1"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 沖縄県 -->
+            <div class="prefecture-row">
+                <div class="prefecture-name">沖縄県</div>
+                <div class="prefecture-shops">
+                    <div class="shop-box">
+                        <h4 class="shop-name">沖縄県連盟</h4>
+                        <div class="shop-info">
+                            <p class="shop-address">〒900-0012 那覇市泊1-3-5 りゅうせき崇元寺SS 2F</p>
+                            <p class="shop-tel">TEL：098-943-2385</p>
+                            <p class="shop-map"><a href="https://www.google.com/maps/search/?api=1&query=那覇市泊1-3-5"
+                                    target="_blank">地図を見る</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note-container">
+            <p class="note-title">※注釈</p>
+            <ul>
+                <li>※印は一部商品のみ取り扱い、または事務局での取り扱いなし</li>
+                <li>山形県、東京都、奈良県、和歌山県、鳥取県、岡山県、香川県、高知県、佐賀県の事務局ではスカウト用品を取り扱っていません</li>
+                <li>広島県、徳島県、長崎県、鹿児島県は一部商品のみ取り扱っています</li>
+            </ul>
+        </div>
+
+        <div class="online-shop-info">
+            <h3>オンラインショップのご案内</h3>
+            <p>ボーイスカウト用品はオンラインショップでもご購入いただけます。</p>
+            <p class="online-shop-link"><a href="https://scoutshop.scout.or.jp/" target="_blank">オンラインショップはこちら</a>
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<style>
+    /* コンテナ全体のスタイル */
+    .scout-map-container {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    /* ECサイトリンクコンテナ */
+    .ec-site-link-container {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    /* ECサイトリンクスタイル */
+    .ec-site-link {
+        display: inline-block;
+        text-decoration: none;
+        color: #1b5e20;
+        transition: all 0.3s;
+    }
+
+    .ec-site-link:hover {
+        transform: translateY(-2px);
+    }
+
+    /* ECバナースタイル */
+    .ec-banner {
+        display: flex;
+        align-items: center;
+        background-color: #f0f7f0;
+        border: 1px solid #3c8c3e;
+        border-radius: 4px;
+        padding: 8px 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .ec-banner:hover {
+        background-color: #e8f5e9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ロゴ（小さいサイズ） */
+    .shop-logo-small {
+        width: 260px;
+        height: auto;
+        margin-right: 12px;
+    }
+
+    /* ECリンクテキスト */
+    .ec-link-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ec-title {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+
+    .ec-action {
+        font-size: 12px;
+        color: #4CAF50;
+    }
+
+    .arrow-icon {
+        font-style: normal;
+        font-weight: bold;
+        margin-left: 4px;
+    }
+
+    /* 日本地図部分のスタイル */
+    .japan-map-wrapper {
+        margin-top: 10px;
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+        .ec-site-link {
+            width: 90%;
+        }
+
+        .ec-site-link-container {
+            text-align: center;
+            margin-bottom: 20px;
+            /* width: 90%; */
+        }
+
+        .ec-banner {
+            flex-direction: column;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .shop-logo-small {
+            margin-right: 0;
+            margin-bottom: 8px;
+        }
+    }
+</style>
