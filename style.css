@@ -402,15 +402,22 @@
 
 /* 各地域の位置指定 */
 
-.tohoku {
-    top: 25%;
-    right: 25%;
+.hokkaido-tohoku {
+    top: 35%;
+    right: 12%;
+}
+
+@media (max-width: 768px) {
+    .hokkaido-tohoku {
+        top: 34%;
+        right: 0%;
+    }
 }
 
 
 .kanto {
-    top: 50%;
-    right: 25%;
+    top: 55%;
+    right: 24%;
 }
 
 @media (max-width: 768px) {
@@ -433,27 +440,27 @@
 }
 
 .kinki {
-    top: 65%;
-    left: 45%;
+    top: 70%;
+    left: 31%;
 }
 
 @media (max-width: 768px) {
     .kinki {
-        top: 70%;
-        left: 38%;
+        top: 67%;
+        left: 35%;
     }
 }
 
 
 .chugoku {
-    top: 50%;
-    left: 25%;
+    top: 65%;
+    left: 13%;
 }
 
 @media (max-width: 768px) {
     .chugoku {
-        top: 66%;
-        left: 14%;
+        top: 60%;
+        left: 5%;
     }
 }
 
