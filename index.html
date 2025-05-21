@@ -1942,6 +1942,745 @@
 
 
 <style>
+    .japan-map-container {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    }
+
+    .japan-map {
+        width: 100%;
+        height: auto;
+    }
+
+    /* 説明用吹き出し */
+    .map-description-bubble {
+        position: absolute;
+        top: 80px;
+        left: 0px;
+        background-color: white;
+        border: 2px solid #336633;
+        border-radius: 12px;
+        padding: 15px 15px 15px 60px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        max-width: 280px;
+    }
+
+    .map-description-bubble:after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 30px;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border-right: 2px solid #336633;
+        border-bottom: 2px solid #336633;
+        transform: rotate(45deg);
+    }
+
+    .map-description-bubble h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: #336633;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .map-description-bubble p {
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #444;
+        line-height: 1.5;
+    }
+
+    .magnifier-icon {
+        position: absolute;
+        top: 25%;
+        left: 20px;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background: linear-gradient(45deg, #336633, #4a7a4a);
+        border-radius: 50%;
+    }
+
+    .magnifier-icon:before {
+        content: '';
+        position: absolute;
+        top: 6px;
+        left: 7px;
+        width: 12px;
+        height: 12px;
+        border: 2px solid white;
+        border-radius: 50%;
+    }
+
+    .magnifier-icon:after {
+        content: '';
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+        width: 2px;
+        height: 8px;
+        background-color: white;
+        transform: rotate(-45deg);
+        transform-origin: bottom;
+    }
+
+    /* ボーイスカウトらしいボタンスタイル */
+    .scout-region-button {
+        position: absolute;
+        z-index: 10;
+    }
+
+    .scout-region-link {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        border: 2px solid #336633;
+        border-radius: 30px;
+        padding: 6px 15px 6px 6px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        color: #336633;
+        font-weight: bold;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    .scout-region-link:hover {
+        background-color: #336633;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .scout-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+        background-color: #336633;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .scout-emblem {
+        display: inline-block;
+        width: 18px;
+        height: 22px;
+        position: relative;
+    }
+
+    .scout-emblem:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 12px;
+        height: 16px;
+        background-color: white;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    .scout-emblem:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 8px;
+        background-color: #336633;
+        clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    }
+
+    /* 地域ごとの色分け */
+
+    /* 東北 */
+    .scout-region-button:nth-child(3) .scout-badge {
+        background-color: #87cefa;
+    }
+
+    .scout-region-button:nth-child(3) .scout-emblem:after {
+        background-color: #5a9ed6;
+    }
+
+    .scout-region-button:nth-child(3) .scout-region-link {
+        border-color: #5a9ed6;
+        color: #5a9ed6;
+    }
+
+    .scout-region-button:nth-child(3) .scout-region-link:hover {
+        background-color: #5a9ed6;
+        color: white;
+    }
+
+    /* 北関東 */
+    .kanto {
+        top: 60%;
+        right: 27%;
+    }
+
+    .scout-region-button:nth-child(4) .scout-badge {
+        background-color: #3DA941;
+    }
+
+    .scout-region-button:nth-child(4) .scout-emblem:after {
+        background-color: #3f8a3f;
+    }
+
+    .scout-region-button:nth-child(4) .scout-region-link {
+        border-color: #4daf4d;
+        color: #4daf4d;
+    }
+
+    .scout-region-button:nth-child(4) .scout-region-link:hover {
+        background-color: #4daf4d;
+        color: white;
+    }
+
+    /* 関東・甲信越 */
+    .scout-region-button:nth-child(5) .scout-badge {
+        background-color: #99CC33;
+    }
+
+    .scout-region-button:nth-child(5) .scout-emblem:after {
+        background-color: #79a228;
+    }
+
+    .scout-region-button:nth-child(5) .scout-region-link {
+        border-color: #99CC33;
+        color: #99CC33;
+    }
+
+    .scout-region-button:nth-child(5) .scout-region-link:hover {
+        background-color: #99CC33;
+        color: white;
+    }
+
+    /* 中部・関西 */
+    .scout-region-button:nth-child(6) .scout-badge {
+        background-color: #F1C102;
+    }
+
+    .scout-region-button:nth-child(6) .scout-emblem:after {
+        background-color: #b38f00;
+    }
+
+    .scout-region-button:nth-child(6) .scout-region-link {
+        border-color: #F1C102;
+        color: #F1C102;
+    }
+
+    .scout-region-button:nth-child(6) .scout-region-link:hover {
+        background-color: #F1C102;
+        color: white;
+    }
+
+    /* 中国 */
+    .scout-region-button:nth-child(7) .scout-badge {
+        background-color: #ffce54;
+    }
+
+    .scout-region-button:nth-child(7) .scout-emblem:after {
+        background-color: #f6bb42;
+    }
+
+    .scout-region-button:nth-child(7) .scout-region-link {
+        border-color: #f6bb42;
+        color: #f6bb42;
+    }
+
+    .scout-region-button:nth-child(7) .scout-region-link:hover {
+        background-color: #f6bb42;
+        color: white;
+    }
+
+    /* 四国 */
+    .scout-region-button:nth-child(8) .scout-badge {
+        background-color: #FD9EAB;
+    }
+
+    .scout-region-button:nth-child(8) .scout-emblem:after {
+        background-color: #cf828c;
+    }
+
+    .scout-region-button:nth-child(8) .scout-region-link {
+        border-color: #FD9EAB;
+        color: #FD9EAB;
+    }
+
+    .scout-region-button:nth-child(8) .scout-region-link:hover {
+        background-color: #FD9EAB;
+        color: #FD9EAB;
+    }
+
+    /* 九州・沖縄 */
+    .scout-region-button:nth-child(9) .scout-badge {
+        background-color: #ed5565;
+    }
+
+    .scout-region-button:nth-child(9) .scout-emblem:after {
+        background-color: #da4453;
+    }
+
+    .scout-region-button:nth-child(9) .scout-region-link {
+        border-color: #da4453;
+        color: #da4453;
+    }
+
+    .scout-region-button:nth-child(9) .scout-region-link:hover {
+        background-color: #da4453;
+        color: white;
+    }
+
+    /* レスポンシブデザイン */
+    @media (max-width: 768px) {
+        .map-description-bubble {
+            display: none;
+        }
+
+        .scout-region-button {
+            margin: 8px;
+            display: inline-block;
+        }
+
+        .magnifier-icon {
+            top: 6%;
+            left: 41px;
+        }
+
+        .japan-map-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .map-description-bubble {
+            position: static;
+            margin-bottom: 20px;
+            max-width: 100%;
+        }
+
+        .scout-buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .scout-badge {
+            display: none;
+        }
+
+        .hokkaido-tohoku {
+            top: 33%;
+            right: 3%;
+        }
+
+        .kanto {
+            top: 56%;
+            right: 18%;
+        }
+    }
+
+
+
+
+
+
+    /* 地域ボックスの基本スタイル */
+    .area-box {
+        position: absolute;
+        z-index: 10;
+        background-color: white;
+        border: 2px solid #4CAF50;
+        border-radius: 8px;
+        padding: 8px 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.2s;
+        min-width: 120px;
+    }
+
+    .area-box:hover {
+        transform: scale(1.05);
+        background-color: #f0fff0;
+    }
+
+    .area-box h3 {
+        text-align: center;
+        margin: 0 0 5px 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .area-box p {
+        font-size: 10px;
+        color: #666;
+        margin: 0;
+        text-align: center;
+    }
+
+    /* 地図エリアと関連スタイル */
+    .map-area {
+        position: relative;
+        height: 600px;
+        background-color: #f9f9f9;
+    }
+
+    .japan-map-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /* 各地域の位置指定 */
+
+    .hokkaido-tohoku {
+        top: 35%;
+        right: 12%;
+    }
+
+    @media (max-width: 768px) {
+        .hokkaido-tohoku {
+            top: 34%;
+            right: 0%;
+        }
+    }
+
+
+    .kanto {
+        top: 55%;
+        right: 24%;
+    }
+
+    @media (max-width: 768px) {
+        .kanto {
+            top: 55%;
+            right: 17%;
+        }
+    }
+
+    .chubu {
+        top: 60%;
+        right: 40%;
+    }
+
+    @media (max-width: 768px) {
+        .chubu {
+            top: 49%;
+            right: 46%;
+        }
+    }
+
+    .kinki {
+        top: 70%;
+        left: 31%;
+    }
+
+    @media (max-width: 768px) {
+        .kinki {
+            top: 67%;
+            left: 35%;
+        }
+    }
+
+
+    .chugoku {
+        top: 65%;
+        left: 13%;
+    }
+
+    @media (max-width: 768px) {
+        .chugoku {
+            top: 60%;
+            left: 5%;
+        }
+    }
+
+    .shikoku {
+        top: 75%;
+        left: 35%;
+    }
+
+    .kyushu-okinawa {
+        top: 82%;
+        left: -1%;
+    }
+
+    @media (max-width: 768px) {
+        .kyushu-okinawa {
+            top: 91%;
+            left: -1%;
+        }
+    }
+
+
+
+
+    /* コンテナのスタイル */
+    .scout-shop-container {
+        max-width: 800px;
+        margin: 0 auto;
+        font-family: sans-serif;
+    }
+
+    /* エリア検索部分 */
+    .area-map-container {
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    /* ショップ一覧共通スタイル */
+    .shop-list-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        font-family: sans-serif;
+        color: #333;
+        margin-top: 30px;
+    }
+
+    .shop-title {
+        color: #00664B;
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .shop-title-line {
+        border: none;
+        height: 3px;
+        background-color: #00664B;
+        margin-bottom: 30px;
+    }
+
+    /* 地方コンテナ */
+    .region-container {
+        margin-bottom: 40px;
+    }
+
+    .region-header {
+        background-color: #00664B;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+
+    .region-header h3 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    /* 県別の行 */
+    .prefecture-row {
+        display: flex;
+        margin-bottom: 20px;
+        border-bottom: 1px dotted #ccc;
+        padding-bottom: 15px;
+    }
+
+    .prefecture-name {
+        width: 120px;
+        color: #00664B;
+        font-weight: bold;
+        font-size: 18px;
+        padding: 10px 5px;
+        flex-shrink: 0;
+    }
+
+    .prefecture-shops {
+        flex-grow: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    /* 店舗ボックス */
+    .shop-box {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        width: 80%;
+        min-width: 300px;
+    }
+
+    .shop-name {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #00664B;
+        font-size: 16px;
+        border-bottom: 1px dashed #ccc;
+        padding-bottom: 5px;
+    }
+
+    .shop-info p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    .shop-map a {
+        color: #336633;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .shop-map a:hover {
+        text-decoration: underline;
+    }
+
+    .note {
+        color: #c33;
+        font-size: 14px;
+        margin-left: 5px;
+    }
+
+    /* 注釈セクション */
+    .note-container {
+        background-color: #fff8e1;
+        border: 1px solid #ffe082;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 30px;
+    }
+
+    .note-title {
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .note-container ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .note-container li {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    /* オンラインショップ情報 */
+    .online-shop-info {
+        margin-top: 40px;
+        background-color: #e8f5e9;
+        border: 1px solid #81c784;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .online-shop-info h3 {
+        color: #00664B;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .online-shop-link a {
+        display: inline-block;
+        background-color: #00664B;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .online-shop-link a:hover {
+        background-color: #2e5e2e;
+    }
+
+    /* レスポンシブデザイン */
+    @media (max-width: 768px) {
+        .prefecture-row {
+            flex-direction: column;
+        }
+
+        .prefecture-name {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .shop-box {
+            width: 100%;
+        }
+
+        .map-description-bubble:after {
+            display: none;
+        }
+    }
+
+
+    .note-container li {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .prefecture-item {
+            width: calc(50% - 10px);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .prefecture-item {
+            width: 100%;
+        }
+    }
+
+
+
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+        .map-area {
+            height: 500px;
+        }
+
+        .area-box {
+            padding: 5px;
+        }
+
+        .area-box h3 {
+            font-size: 14px;
+        }
+
+        .area-box p {
+            font-size: 8px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .map-area {
+            height: 400px;
+        }
+
+        .banner-content {
+            flex-direction: column;
+        }
+
+        .scout-logo {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        .banner-text {
+            text-align: center;
+        }
+    }
+
     /* コンテナ全体のスタイル */
     .scout-map-container {
         max-width: 900px;
