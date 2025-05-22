@@ -1937,6 +1937,10 @@
         <p class="online-shop-link"><a href="https://scoutshop.scout.or.jp/" target="_blank">オンラインショップはこちら</a>
         </p>
     </div>
+
+    <!-- トップへ戻るボタン -->
+    <img id="toTopBtn" src="img/go-to-top.png" onclick="scrollToTop()" alt="TOPへ戻るボタン">
+
 </div>
 </div>
 </div>
@@ -2760,6 +2764,18 @@
         margin-top: 10px;
     }
 
+    #toTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+        width: 100px;
+        /* 必要に応じてサイズ調整 */
+        cursor: pointer;
+    }
+
+
     /* レスポンシブ対応 */
     @media (max-width: 768px) {
         .ec-site-link {
@@ -2784,3 +2800,20 @@
         }
     }
 </style>
+<script>
+    // スクロール時にボタンを表示・非表示
+    window.onscroll = function () {
+        const btn = document.getElementById("toTopBtn");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    };
+
+    // ボタン押下でトップへスクロール
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+</script>
